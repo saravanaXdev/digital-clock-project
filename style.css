@@ -1,1 +1,35 @@
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 1s ease-in-out;
+    color: white;
+}
+
+.clock-container {
+    text-align: center;
+    padding: 40px 60px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#clock {
+    font-size: 64px;
+    letter-spacing: 3px;
+}
+
+#date {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.85;
+}
     
