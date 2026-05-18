@@ -1,17 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Digital Clock</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Digital Clock</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      padding: 45px;
+      border-radius: 26px;
+      width: 420px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin-bottom: 40px;
+    }
+
+    #country {
+      font-size: 35px;
+      color: Yellow;
+      margin-bottom: 15px;
+    }
+
+    #clock {
+      font-size: 50px;
+      margin: 20px 0;
+      letter-spacing: 3px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #00adb5;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #008891;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="clock-container">
-        <h1 id="clock">00:00:00</h1>
-        <p id="date">Loading date...</p>
-    </div>
+  <div class="container">
+    <h1>🌍 World Clock</h1>
 
-    <script src="script.js"></script>
+    <div id="country">India</div>
+    <div id="clock">00:00:00</div>
+
+    <div class="buttons">
+      <button onclick="setCountry('Asia/Kolkata','India 🇮🇳')">India</button>
+
+      <button onclick="setCountry('America/New_York','USA 🇺🇸')">USA</button>
+
+      <button onclick="setCountry('Europe/London','UK 🇬🇧')">UK</button>
+
+      <button onclick="setCountry('Asia/Tokyo','Japan 🇯🇵')">Japan</button>
+
+      <button onclick="setCountry('Australia/Sydney','Australia 🇦🇺')">Australia</button>
+
+      <button onclick="setCountry('Asia/Dubai','Dubai 🇦🇪')">Dubai</button>
+    </div>
+  </div>
+
+  <script>
+    let currentZone = "Asia/Kolkata";
+    let currentCountry = "India 🇮🇳";
+
+    function updateClock() {
+      const now = new Date();
+
+      const options = {
+        timeZone: currentZone,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+
+      const time = now.toLocaleTimeString('en-US', options);
+
+      document.getElementById("clock").innerHTML = time;
+      document.getElementById("country").innerHTML = currentCountry;
+    }
+
+    function setCountry(zone, country) {
+      currentZone = zone;
+      currentCountry = country;
+      updateClock();
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
 </body>
 </html>
