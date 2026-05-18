@@ -33,12 +33,4 @@ function changeBackground() {
     bgIndex = (bgIndex + 1) % backgrounds.length;
 }
 
-// Initial load
-changeBackground();
-updateClock();
-
-// Update clock every second
-setInterval(updateClock, 1000);
-
-// Change background every 1 minute
-setInterval(changeBackground, 60000);
+s
